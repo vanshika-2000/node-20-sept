@@ -8,4 +8,8 @@ router.get('/',(req,res)=>{
 router.post('/add/student' , (req,res)=>{
     studentcontrollers.addStudent(req,res)
 })
+
+router.get('/students', (req,res)=>{
+    studentcontrollers.getStudents(req,res)
+})
 module.exports = router

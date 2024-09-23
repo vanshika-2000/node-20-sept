@@ -5,11 +5,24 @@ async function addStudent(req,res){
         console.log(req.body);
         let student = new Student(req.body);
         await student.save();
-        res.end("data added successfully...");
+        res.render('studentinsert')
     }catch(err){
         console.log(err);
     }
 }
+async function getStudents(req,res) {
+    try{
+        let students = await Student.find({})
+        res.render('studentlist' , {
+            students:students
+        })
+    }
+    catch(err){
+        console.log(err)
+    }
+}
+
 module.exports={
-    addStudent
+    addStudent,
+    getStudents
 }
